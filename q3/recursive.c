@@ -14,13 +14,14 @@ struct TreeNode *flatten(struct TreeNode *root){
 			struct TreeNode *rightMost = root->left;
 			while(rightMost->right)
 				rightMost = rightMost->right;
-			root->right = flatten(root->right);
-			rightMost->right = right;
+			root->right = flatten(root->left);
 			root->right = root->left;
-			root->left = NULL;
+			root->left = NULL;			
+			rightMost->right = right;
 		}
 	return root;
 	}
+	return 0;
 }
 
 void printout(struct TreeNode * root, int level, char RL) {	//CHECK TREENODE by Tree Traversal
